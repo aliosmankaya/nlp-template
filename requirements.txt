@@ -1,3 +1,6 @@
 torch
 transformers
 pandas
+tqdm
+scikit-learn
+torchmetrics
