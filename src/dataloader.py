@@ -33,7 +33,7 @@ def dataloader(data: pd.DataFrame, loader_type: str = "train"):
     )
 
     # Dataset
-    dataset = CustomDataset(encodings, data["labels"])
+    dataset = CustomDataset(encodings, data["target"])
 
     # Dataloader
     return DataLoader(
