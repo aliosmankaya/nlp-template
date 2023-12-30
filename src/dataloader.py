@@ -7,16 +7,16 @@ from config import CFG
 
 
 class CustomDataset(Dataset):
-    def __init__(self, encodings, labels):
+    def __init__(self, encodings, target):
         self.encodings = encodings
-        self.labels = labels
+        self.target = target
 
     def __len__(self):
-        return len(self.labels)
+        return len(self.target)
 
     def __getitem__(self, idx):
         item = {key: tensor(value[idx]) for key, value in self.encodings.items()}
-        item["labels"] = tensor(self.labels[idx])
+        item["target"] = tensor(self.target[idx])
         return item
 
 

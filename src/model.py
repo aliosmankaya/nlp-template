@@ -17,7 +17,7 @@ class CustomModel(nn.Module):
             config=self.config,
         )
 
-    def forward(self, input_ids, attention_mask, labels):
+    def forward(self, input_ids, attention_mask, target):
         return self.model(
-            input_ids=input_ids, attention_mask=attention_mask, labels=labels
+            input_ids=input_ids, attention_mask=attention_mask, target=target
         )
