@@ -1,7 +1,8 @@
 from dataclasses import dataclass
+
+from sklearn.model_selection import StratifiedKFold
 from torch.cuda import is_available
 from torchmetrics import F1Score
-from sklearn.model_selection import StratifiedKFold
 
 
 @dataclass

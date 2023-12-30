@@ -1,17 +1,16 @@
 from src.config import CFG
-from src.model import CustomModel
 from src.dataloader import dataloader
-from src.utils import train_fn, val_fn
+from src.model import CustomModel
 from src.preprocess import preprocess_fn
+from src.utils import train_fn, val_fn
 
 
 class Train:
     def __init__(self, data_path):
         self.data_path = data_path
-        self.val_strategy = CFG.val_strategy(n_splits=CFG.n_splits,
-                                             shuffle=True,
-                                             random_state=CFG.seed
-                                             )
+        self.val_strategy = CFG.val_strategy(
+            n_splits=CFG.n_splits, shuffle=True, random_state=CFG.seed
+        )
         self.metric = CFG.metric(task=CFG.task, num_labels=CFG.num_labels)
 
     def _data(self):
