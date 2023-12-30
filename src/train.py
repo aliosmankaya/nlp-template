@@ -22,11 +22,10 @@ class Train:
 
     def run(self):
         data = self._data()
-
+        print(CFG.device)
         for fold, (train_index, test_index) in enumerate(
             self.val_strategy.split(data["text"], data["labels"])
         ):
-            print("Fold", fold + 1)
             train = data.loc[train_index].reset_index().drop("index", axis=1)
             test = data.loc[test_index].reset_index().drop("index", axis=1)
 
@@ -35,6 +34,9 @@ class Train:
 
             model = CustomModel().to(CFG.device)
 
+            print("\n")
+            print("\n")
+            print("Fold", fold + 1)
             for epoch in range(3):
                 print("\n")
                 print("Epoch", epoch)
@@ -45,8 +47,7 @@ class Train:
                 print("Val step")
                 val_fn(model=model, dataloader=test_dataloader, metric=self.metric)
 
-                print("\n")
-                print("F1 Score:", self.metric.compute().item())
+                print("Score:", self.metric.compute().item())
 
                 self.metric.reset()
 
