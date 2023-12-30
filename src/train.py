@@ -22,7 +22,7 @@ class Train:
         data = self._data()
 
         for fold, (train_index, test_index) in enumerate(
-            self.val_strategy.split(data["text"], data["target"])
+            self.val_strategy.split(data["text"], data["labels"])
         ):
             print("Fold", fold + 1)
             train = data.loc[train_index].reset_index().drop("index", axis=1)

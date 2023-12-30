@@ -8,14 +8,14 @@ def generic_fn(model, dataloader, metric):
     for batch in tqdm(dataloader):
         input_ids = batch["input_ids"].to(CFG.device)
         attention_mask = batch["attention_mask"].to(CFG.device)
-        target = batch["target"].to(CFG.device)
+        labels = batch["labels"].to(CFG.device)
 
         outputs = model(
-            input_ids=input_ids, attention_mask=attention_mask, target=target
+            input_ids=input_ids, attention_mask=attention_mask, labels=labels
         )
 
         logits = torch.argmax(outputs.logits, dim=1)
-        _ = metric(logits, target)
+        _ = metric(logits, labels)
     return metric.compute().item()
 
 

@@ -7,16 +7,16 @@ from config import CFG
 
 
 class CustomDataset(Dataset):
-    def __init__(self, encodings, target):
+    def __init__(self, encodings, labels):
         self.encodings = encodings
-        self.target = target
+        self.labels = labels
 
     def __len__(self):
-        return len(self.target)
+        return len(self.labels)
 
     def __getitem__(self, idx):
         item = {key: tensor(value[idx]) for key, value in self.encodings.items()}
-        item["target"] = tensor(self.target[idx])
+        item["labels"] = tensor(self.labels[idx])
         return item
 
 
@@ -33,7 +33,7 @@ def dataloader(data: pd.DataFrame, loader_type: str = "train"):
     )
 
     # Dataset
-    dataset = CustomDataset(encodings, data["target"])
+    dataset = CustomDataset(encodings, data["labels"])
 
     # Dataloader
     return DataLoader(
