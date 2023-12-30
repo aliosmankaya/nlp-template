@@ -33,7 +33,6 @@ pip install -r requirements.txt
 ## Customize
 
 * **task:** Problem task (*str*, defaults to "binary")
-
 * **num_labels**: Number of labels (*int*, defaults to 2)
 * **model_path**: Pretrained model path (*str*, defaults to "bert-base-uncased")
 * **epochs**: Epochs number (*int*, defaults to 3)
@@ -54,7 +53,7 @@ To initiate the training phase, use the following command:
 python3 train.py --path PATH
 ```
 
-* **path** : Train data path
+* **PATH** : Train data path
 
 
 ## Inference
