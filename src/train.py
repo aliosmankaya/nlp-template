@@ -13,7 +13,9 @@ class Train:
         self.val_strategy = CFG.val_strategy(
             n_splits=CFG.n_splits, shuffle=True, random_state=CFG.seed
         )
-        self.metric = CFG.metric(task=CFG.task, num_labels=CFG.num_labels)
+        self.metric = CFG.metric(task=CFG.task, num_labels=CFG.num_labels).to(
+            CFG.device
+        )
 
     def _data(self):
         return preprocess_fn(self.data_path)
