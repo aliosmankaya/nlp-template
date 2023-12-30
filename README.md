@@ -2,7 +2,7 @@
 
 ***Customizable NLP Model Development Template***
 
-This customizable template for natural language processing (NLP) tasks. With simple modifications in a single config.py file, it enables the development of various NLP models. The primary goal is to offer a starting point for developers working in the NLP domain.
+This customizable template for natural language processing (NLP) tasks. With simple modifications in a single [config.py](src/config.py) file, it enables the development of various NLP models. The primary goal is to offer a starting point for developers working in the NLP domain.
 
 ## Usage
 
