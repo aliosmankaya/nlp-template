@@ -1,7 +1,7 @@
 import torch
 from tqdm import tqdm
 
-from src.config import CFG
+from config import CFG
 
 
 def generic_fn(model, dataloader, metric):

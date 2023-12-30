@@ -3,7 +3,7 @@ from torch import tensor
 from torch.utils.data import DataLoader, Dataset
 from transformers import AutoTokenizer
 
-from src.config import CFG
+from config import CFG
 
 
 class CustomDataset(Dataset):

@@ -1,7 +1,7 @@
 from torch import nn
 from transformers import AutoConfig, AutoModelForSequenceClassification
 
-from src.config import CFG
+from config import CFG
 
 
 class CustomModel(nn.Module):
