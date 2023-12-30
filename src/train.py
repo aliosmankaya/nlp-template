@@ -54,7 +54,7 @@ class Train:
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--path", help="data path to train the model")
+    parser.add_argument("--path", help="train data path")
     args = parser.parse_args()
 
     train = Train(data_path=args.path)
