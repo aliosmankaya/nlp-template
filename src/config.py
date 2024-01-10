@@ -2,7 +2,15 @@ from dataclasses import dataclass
 
 from sklearn.model_selection import StratifiedKFold
 from torch.cuda import is_available
-from torchmetrics import F1Score
+from torchmetrics import AUROC, Accuracy, F1Score, Precision, Recall
+
+
+class Metric:
+    auc = AUROC
+    accuracy = Accuracy
+    f1_score = F1Score
+    precision = Precision
+    recall = Recall
 
 
 @dataclass
@@ -21,4 +29,4 @@ class CFG:
 
     val_strategy = StratifiedKFold
     n_splits: int = 5
-    metric = F1Score
+    metric = getattr(Metric, "auc")

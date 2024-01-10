@@ -1,6 +1,6 @@
 import argparse
 
-from config import CFG
+from config import CFG, Metric
 from dataloader import dataloader
 from model import CustomModel
 from preprocess import preprocess_fn
@@ -8,7 +8,7 @@ from utils import train_fn, val_fn
 
 
 class Train:
-    def __init__(self, data_path):
+    def __init__(self, data_path: str, metric: str = None):
         self.data_path = data_path
         self.val_strategy = CFG.val_strategy(
             n_splits=CFG.n_splits, shuffle=True, random_state=CFG.seed
@@ -16,6 +16,10 @@ class Train:
         self.metric = CFG.metric(task=CFG.task, num_labels=CFG.num_labels).to(
             CFG.device
         )
+        if metric:
+            self.metric = getattr(Metric, metric)(
+                task=CFG.task, num_labels=CFG.num_labels
+            ).to(CFG.device)
 
     def _data(self):
         return preprocess_fn(self.data_path)
@@ -55,6 +59,7 @@ class Train:
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--path", help="train data path")
+    parser.add_argument("--metric", help="evaluation metric", default="auc")
     args = parser.parse_args()
 
     train = Train(data_path=args.path)
